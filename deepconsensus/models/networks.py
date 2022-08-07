@@ -81,6 +81,7 @@ def FullyConnectedNet(params: ml_collections.ConfigDict) -> tf.keras.Model:
   net = tf.keras.layers.Dense(units=params.max_length * params.num_classes)(net)
   net = tf.keras.layers.Reshape((params.max_length, params.num_classes))(net)
   net = tf.keras.layers.Softmax(axis=-1)(net)
+  net = tf.keras.layers.Activation('softmax', dtype='float32', name='predictions')(net)
   outputs = net
   return tf.keras.Model(inputs=inputs, outputs=outputs)
 
