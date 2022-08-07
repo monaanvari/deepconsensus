@@ -278,7 +278,7 @@ class EncoderOnlyTransformer(tf.keras.Model):
       if self.params['add_pos_encoding']:
         with tf.name_scope('add_pos_encoding'):
           pos_encoding = self.position_embedding(inputs=encoder_inputs)
-          pos_encoding = tf.cast(pos_encoding, self.params['dtype'])
+#           pos_encoding = tf.cast(pos_encoding, self.params['dtype'])
           encoder_inputs += pos_encoding
 
       # Add dropout when training.
@@ -423,6 +423,7 @@ class EncoderOnlyLearnedValuesTransformer(EncoderOnlyTransformer):
       # quadratic in its hidden size.
       # Shape: [batch_size, length, transformer_input_size]
       transformer_input = self.transformer_input_condenser(embedded_inputs)
+#       transformer_input = tf.keras.layers.Activation('linear', dtype='float16')
     else:
       transformer_input = embedded_inputs
 
