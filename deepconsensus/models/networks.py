@@ -66,7 +66,7 @@ def FullyConnectedNet(params: ml_collections.ConfigDict) -> tf.keras.Model:
   """Fully connected neural network architecture."""
 
   inputs = tf.keras.Input(
-      shape=(params.hidden_size, params.max_length, params.num_channels))
+      shape=(params.hidden_size, params.max_length, params.num_channels), dtype='float32')
   l2_reg = tf.keras.regularizers.l2
   net = inputs
   net = tf.keras.layers.Flatten()(net)
