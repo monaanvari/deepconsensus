@@ -415,7 +415,7 @@ class EncoderOnlyLearnedValuesTransformer(EncoderOnlyTransformer):
         embedded_inputs.append(embedded)
 
     embedded_inputs = tf.concat(embedded_inputs, axis=-1)
-    embedded_inputs = tf.cast(embedded_inputs, self.params['dtype'])
+    #embedded_inputs = tf.cast(embedded_inputs, self.params['dtype'])
 
     if self.params.condense_transformer_input:
       # Condense the transformer input at each position to a smaller vector to
