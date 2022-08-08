@@ -270,7 +270,7 @@ class EncoderOnlyTransformer(tf.keras.Model):
       inputs_padding = tf.reduce_sum(tf.zeros_like(encoder_inputs), -1)
 
       # Cast input `attention_bias` to correct type, as done in the base model.
-      attention_bias = tf.cast(attention_bias, self.params['dtype'])
+      #attention_bias = tf.cast(attention_bias, self.params['dtype'])
 
       # Add positional encoding to the input. The scale of the positional
       # encoding relative to the input values will matter since we are not
