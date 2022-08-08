@@ -278,8 +278,8 @@ class EncoderOnlyTransformer(tf.keras.Model):
         with tf.name_scope('add_pos_encoding'):
           pos_encoding = self.position_embedding(inputs=encoder_inputs)
           pos_encoding = tf.cast(pos_encoding, tf.experimental.numpy.float16)
-          print(pos_encoding.type)
-          print(encoder_inputs.type)
+          print(pos_encoding.dtype)
+          print(encoder_inputs.dtype)
           print("HERE!")
           encoder_inputs += pos_encoding
 
