@@ -280,6 +280,7 @@ class EncoderOnlyTransformer(tf.keras.Model):
           pos_encoding = tf.cast(pos_encoding, tf.experimental.numpy.float16)
           print(pose_encoding.type)
           print(encoder_inputs.type)
+          print("HERE!")
           encoder_inputs += pos_encoding
 
       # Add dropout when training.
