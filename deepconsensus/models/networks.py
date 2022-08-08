@@ -294,6 +294,8 @@ class EncoderOnlyTransformer(tf.keras.Model):
       # not actually used by EncoderStack.call. Encoder stack output has shape
       # (batch_size, input_length, hidden_size).
       #Mona casting
+      print("HERE4")
+      print(encoder_inputs.dtype)
       encoder_inputs = tf.cast(encoder_inputs, tf.float32)
       encoder_outputs = self.encoder_stack(
           encoder_inputs, attention_bias, inputs_padding, training=training)
