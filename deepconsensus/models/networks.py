@@ -423,9 +423,9 @@ class EncoderOnlyLearnedValuesTransformer(EncoderOnlyTransformer):
       # quadratic in its hidden size.
       # Shape: [batch_size, length, transformer_input_size]
       transformer_input = self.transformer_input_condenser(embedded_inputs)
-      transformer_input = tf.keras.layers.Activation('linear', dtype='float16')(transformer_input)
     else:
       transformer_input = embedded_inputs
+    transformer_input = tf.keras.layers.Activation('linear', dtype='float16')(transformer_input)
 
     return super(EncoderOnlyLearnedValuesTransformer,
                  self).encode(transformer_input, attention_bias, training)
