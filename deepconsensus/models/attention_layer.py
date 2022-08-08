@@ -133,6 +133,9 @@ class Attention(tf.keras.layers.Layer):
     print("HERE2")
     print(query_input.dtype)
     query = self.query_dense_layer(query_input)
+    print("HERE3")
+    print(query.dtype)
+
     
     key = self.key_dense_layer(source_input)
     value = self.value_dense_layer(source_input)
