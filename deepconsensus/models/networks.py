@@ -239,7 +239,9 @@ class EncoderOnlyTransformer(tf.keras.Model):
     attention_bias = tf.expand_dims(tf.expand_dims(all_zeros, 1), 1)
 
     # Run inputs through the encoder. Encoder returns logits from dense layer.
+    inputs = tf.cast(inputs, tf.float32)
     encoder_outputs = self.encode(inputs, attention_bias, training)
+    print("HERE5")
     return encoder_outputs
 
   def encode(self, inputs: tf.Tensor, attention_bias: tf.Tensor,
