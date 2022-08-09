@@ -389,6 +389,12 @@ class AlignmentLoss(tf.keras.losses.Loss):
       j_range = k - i_range
       inv_mask = tf.logical_and(j_range >= 0, j_range <= n)[:, tf.newaxis]
 
+      #might have to delete:
+      subs_costs = tf.cast(subs_costs,v_p2.dtype)
+      ins_costs = tf.cast(ins_costs,v_p2.dtype)
+      del_cost = tf.cast(del_cost,v_p2.dtype)
+      
+      
       o_m = v_p2 + subs_costs[k - 2]  # [m, b]
       o_i = v_p1 + ins_costs[k - 1]  # [m + 1, b]
       v_p2 = v_p1[:-1]
