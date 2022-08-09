@@ -136,7 +136,7 @@ def xentropy_subs_cost_fn(y_true: tf.Tensor,
   """
   y_pred = tf.clip_by_value(y_pred, eps, 1 - eps)
   y_true, y_pred = tf.expand_dims(y_true, 2), tf.expand_dims(y_pred, 1)
-  return -tf.reduce_sum(tf.math.xlogy(tf.cast(y_true, y_pred.dtype), y_pred), axis=-1)
+  return -tf.reduce_sum(tf.math.xlogy(tf.cast(y_true, tf.float16), tf.cast(y_pred, tf.float16)), axis=-1)
 
 
 def accuracy_subs_cost_fn(y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.Tensor:
