@@ -129,7 +129,7 @@ class Attention(tf.keras.layers.Layer):
     # Linearly project the query, key and value using different learned
     # projections. Splitting heads is automatically done during the linear
     # projections --> [batch_size, length, num_heads, dim_per_head].
-    query_input = tf.cast(query_input, tf.float32)
+    #query_input = tf.cast(query_input, tf.float32)
     print("HERE2")
     print(query_input.dtype)
     query = self.query_dense_layer(query_input)
