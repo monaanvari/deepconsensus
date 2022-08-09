@@ -301,6 +301,7 @@ class EncoderOnlyTransformer(tf.keras.Model):
       encoder_inputs = tf.cast(encoder_inputs, tf.float32)
       encoder_outputs = self.encoder_stack(
           encoder_inputs, attention_bias, inputs_padding, training=training)
+      print("HERE6")
 
       # Pass through dense layer and output logits over vocab for each position.
       encoder_outputs = self.fc1(encoder_outputs)
