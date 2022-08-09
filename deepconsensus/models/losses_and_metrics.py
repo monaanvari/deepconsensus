@@ -136,7 +136,7 @@ def xentropy_subs_cost_fn(y_true: tf.Tensor,
   """
   y_pred = tf.clip_by_value(y_pred, eps, 1 - eps)
   y_true, y_pred = tf.expand_dims(y_true, 2), tf.expand_dims(y_pred, 1)
-  return -tf.reduce_sum(tf.math.xlogy(tf.cast(y_true, tf.float16), tf.cast(y_pred, tf.float16)), axis=-1)
+  return -tf.reduce_sum(tf.math.xlogy(tf.cast(y_true, y_pred.dtype), y_pred), axis=-1)
 
 
 def accuracy_subs_cost_fn(y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.Tensor:
@@ -389,10 +389,10 @@ class AlignmentLoss(tf.keras.losses.Loss):
       j_range = k - i_range
       inv_mask = tf.logical_and(j_range >= 0, j_range <= n)[:, tf.newaxis]
 
-      #might have to delete:
-      subs_costs = tf.cast(subs_costs,v_p2.dtype)
-      ins_costs = tf.cast(ins_costs,v_p2.dtype)
-      del_cost = tf.cast(del_cost,v_p2.dtype)
+#       #might have to delete:
+#       subs_costs = tf.cast(subs_costs,v_p2.dtype)
+#       ins_costs = tf.cast(ins_costs,v_p2.dtype)
+#       del_cost = tf.cast(del_cost,v_p2.dtype)
       
       
       o_m = v_p2 + subs_costs[k - 2]  # [m, b]
