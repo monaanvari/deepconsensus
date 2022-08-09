@@ -240,7 +240,6 @@ class EncoderOnlyTransformer(tf.keras.Model):
 
     # Run inputs through the encoder. Encoder returns logits from dense layer.
     encoder_outputs = self.encode(inputs, attention_bias, training)
-    print("HERE5")
     return encoder_outputs
 
   def encode(self, inputs: tf.Tensor, attention_bias: tf.Tensor,
