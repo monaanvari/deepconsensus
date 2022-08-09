@@ -279,10 +279,6 @@ class EncoderOnlyTransformer(tf.keras.Model):
           pos_encoding = self.position_embedding(inputs=encoder_inputs)
 #           pos_encoding = tf.cast(pos_encoding, tf.experimental.numpy.float16)
           pos_encoding = tf.cast(pos_encoding, encoder_inputs.dtype)
-
-          print(pos_encoding.dtype)
-          print(encoder_inputs.dtype)
-          print("HERE!")
           encoder_inputs += pos_encoding
 
       # Add dropout when training.
@@ -293,19 +289,11 @@ class EncoderOnlyTransformer(tf.keras.Model):
       # Pass inputs through the encoder. As mentioned above, `inputs_padding` is
       # not actually used by EncoderStack.call. Encoder stack output has shape
       # (batch_size, input_length, hidden_size).
-      #Mona casting
-      print("HERE4")
-      print(encoder_inputs.dtype)
       encoder_inputs = tf.cast(encoder_inputs, tf.float32)
-      print("inputs_padding")
-      print(inputs_padding.dtype)
-      print("attention_bias")
       inputs_padding = tf.cast(inputs_padding, tf.float32)
 
-      print(attention_bias.dtype)
       encoder_outputs = self.encoder_stack(
           encoder_inputs, attention_bias, inputs_padding, training=training)
-      print("HERE6")
 
       # Pass through dense layer and output logits over vocab for each position.
       encoder_outputs = self.fc1(encoder_outputs)
