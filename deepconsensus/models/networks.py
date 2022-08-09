@@ -299,6 +299,10 @@ class EncoderOnlyTransformer(tf.keras.Model):
       print("HERE4")
       print(encoder_inputs.dtype)
       encoder_inputs = tf.cast(encoder_inputs, tf.float32)
+      print("inputs_padding")
+      print(inputs_padding.dtype)
+      print("attention_bias")
+      print(attention_bias.dtype)
       encoder_outputs = self.encoder_stack(
           encoder_inputs, attention_bias, inputs_padding, training=training)
       print("HERE6")
